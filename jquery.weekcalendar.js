@@ -2051,9 +2051,9 @@
        */
       _disableTextSelect: function($elements) {
           $elements.each(function() {
-            if ($.browser.mozilla) {//Firefox
+            if (typeof this.style.MozUserSelect !== 'undefined') {//Firefox
                 $(this).css('MozUserSelect', 'none');
-            } else if ($.browser.msie) {//IE
+            } else if (typeof this.onselectstart !== 'undefined') {//IE
                 $(this).bind('selectstart', function() {
                   return false;
                 });
