@@ -56,6 +56,7 @@
         timeslotsPerHour: 4,
         minDate: null,
         maxDate: null,
+        showHeader: true,
         buttons: true,
         buttonText: {
           today: 'today',
@@ -543,7 +544,7 @@
           // events array locally in a store but this should be done in conjunction
           // with a proper binding model.
 
-          var currentEvents = $.map(self.element.find('.wc-cal-event'), function() {
+          var currentEvents = self.element.find('.wc-cal-event').map(function() {
             return $(this).data('calEvent');
           });
 
@@ -703,18 +704,20 @@
        * render the nav buttons on top of the calendar
        */
       _renderCalendarButtons: function($calendarContainer) {
-        var self = this, options = this.options, calendarNavHtml = '';
-
+        var self = this, options = this.options;
+        if ( !options.showHeader ) return;
         if (options.buttons) {
-          calendarNavHtml += '<div class=\"ui-widget-header wc-toolbar\">';
-            calendarNavHtml += '<div class=\"wc-display\"></div>';
-            calendarNavHtml += '<div class=\"wc-nav\">';
-              calendarNavHtml += '<button class=\"wc-prev\">' + options.buttonText.lastWeek + '</button>';
-              calendarNavHtml += '<button class=\"wc-today\">' + options.buttonText.today + '</button>';
-              calendarNavHtml += '<button class=\"wc-next\">' + options.buttonText.nextWeek + '</button>';
+            var calendarNavHtml = '';
+
+            calendarNavHtml += '<div class=\"ui-widget-header wc-toolbar\">';
+              calendarNavHtml += '<div class=\"wc-display\"></div>';
+              calendarNavHtml += '<div class=\"wc-nav\">';
+                calendarNavHtml += '<button class=\"wc-prev\">' + options.buttonText.lastWeek + '</button>';
+                calendarNavHtml += '<button class=\"wc-today\">' + options.buttonText.today + '</button>';
+                calendarNavHtml += '<button class=\"wc-next\">' + options.buttonText.nextWeek + '</button>';
+              calendarNavHtml += '</div>';
+              calendarNavHtml += '<h1 class=\"wc-title\"></h1>';
             calendarNavHtml += '</div>';
-            calendarNavHtml += '<h1 class=\"wc-title\"></h1>';
-          calendarNavHtml += '</div>';
 
           $(calendarNavHtml).appendTo($calendarContainer);
 
@@ -1473,6 +1476,7 @@
 
           while (startDate < endDate) {
             calEvent.start = start;
+            calEvent.end = newDate(0, 0, 0);
 
             // end of this virual calEvent is set to the end of the day
             calEvent.end.setFullYear(start.getFullYear());
@@ -1798,8 +1802,37 @@
         var adjustedStart, adjustedEnd;
         var self = this;
 
-        $weekDay.find('.wc-cal-event').not($calEvent).each(function() {
-          var currentCalEvent = $(this).data('calEvent');
+          var freeBusyManager = self.getFreeBusyManagerForEvent(newCalEvent);
+          $.each(freeBusyManager.getFreeBusys(newCalEvent.start, newCalEvent.end), function() {
+              if (!this.getOption('free')) {
+
+                  if (newCalEvent.start.getTime() == this.getStart().getTime() &&
+                      newCalEvent.end.getTime() > this.getEnd().getTime()) {
+
+                      adjustedStart = this.getEnd();
+                  }
+
+                  if (newCalEvent.end.getTime() == this.getEnd().getTime() &&
+                      newCalEvent.start.getTime() < this.getStart().getTime()) {
+
+                      adjustedEnd = this.getStart();
+                  }
+
+                  if (oldCalEvent.resizable == false ||
+                      (newCalEvent.end.getTime() > this.getEnd().getTime() &&
+                       newCalEvent.start.getTime() < this.getStart().getTime()) ||
+                      (newCalEvent.end.getTime() == this.getEnd().getTime() &&
+                       newCalEvent.start.getTime() == this.getStart().getTime())) {
+
+                      adjustedStart = oldCalEvent.start;
+                      adjustedEnd = oldCalEvent.end;
+                      newCalEvent.userId = oldCalEvent.userId;
+                  }
+              }
+          });
+
+          $weekDay.find('.wc-cal-event').not($calEvent).each(function() {
+            var currentCalEvent = $(this).data('calEvent');
 
           // has been dropped onto existing event overlapping the end time
           if (newCalEvent.start.getTime() < currentCalEvent.end.getTime() &&
@@ -1822,12 +1855,13 @@
                newCalEvent.start.getTime() >= currentCalEvent.start.getTime())
              ) {
 
-            adjustedStart = oldCalEvent.start;
-            adjustedEnd = oldCalEvent.end;
+                adjustedStart = oldCalEvent.start;
+                adjustedEnd = oldCalEvent.end;
+                newCalEvent.userId = oldCalEvent.userId;
+                return false;
+            }
 
-            return false;
-          }
-        });
+          });
 
 
         newCalEvent.start = adjustedStart || newCalEvent.start;
@@ -1865,7 +1899,7 @@
           opacity: 0.5,
           grid: [$calEvent.outerWidth() + 1, options.timeslotHeight],
           start: function(event, ui) {
-            var $calEvent = ui.draggable;
+            var $calEvent = ui.draggable || ui.helper;
             options.eventDrag(calEvent, $calEvent);
           }
         });
@@ -2110,19 +2144,19 @@
        * Disable text selection of the elements in different browsers
        */
       _disableTextSelect: function($elements) {
-        $elements.each(function() {
-          if ($.browser.mozilla) {//Firefox
-              $(this).css('MozUserSelect', 'none');
-          } else if ($.browser.msie) {//IE
-            $(this).bind('selectstart', function() {
-              return false;
-            });
-          } else {//Opera, etc.
-            $(this).mousedown(function() {
-              return false;
-            });
-          }
-        });
+          $elements.each(function() {
+            if (typeof this.style.MozUserSelect !== 'undefined') {//Firefox
+                $(this).css('MozUserSelect', 'none');
+            } else if (typeof this.onselectstart !== 'undefined') {//IE
+                $(this).bind('selectstart', function() {
+                  return false;
+                });
+            } else {//Opera, etc.
+                $(this).mousedown(function() {
+                  return false;
+                });
+            }
+          });
       },
 
       /**
