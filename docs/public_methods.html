@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Public Methods</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<h1>jQuery week calendar methods</h1>
+
+
+	<p>This page documents every public methods of the plugin</p>
+
+
+	<ul>
+	<li><strong>$("#calendar").weekCalendar("today");</strong> // Renders the calendar for todays date.</li>
+		<li><strong>$("#calendar").weekCalendar("prevWeek");</strong> // Go to the previous week relative to the currently rendered week.</li>
+		<li><strong>$("#calendar").weekCalendar("nextWeek");</strong> // Go to the next week relative to the currently rendered week.</li>
+		<li><strong>$("#calendar").weekCalendar("prev");</strong> // Go to the previous set relative to the current date and daysToShow option.</li>
+		<li><strong>$("#calendar").weekCalendar("next");</strong> // Go to the next set relative to the current date and daysToShow option.</li>
+		<li><strong>$("#calendar").weekCalendar("setDaysToShow");</strong> // Changes how many days are shown (see the <em>daysToShow</em> option).</li>
+		<li><strong>$("#calendar").weekCalendar("gotoWeek", date);</strong> // Go to the week that the date passed falls within</li>
+		<li><strong>$("#calendar").weekCalendar("refresh");</strong> // Refreshes the currently rendered week – if the events are based on a remote data source they will be refetched.</li>
+		<li><strong>$("#calendar").weekCalendar("removeEvent", eventId);</strong> // Removes the event from the calendar</li>
+		<li><strong>$("#calendar").weekCalendar("updateEvent", calEvent);</strong> // Updates the event with the same id in the calendar or adds it if it  doesn’t exist.</li>
+		<li><strong>$("#calendar").weekCalendar("removeUnsavedEvents");</strong> // Removes all events in the calendar who’s calEvent data object doesn’t have an id.</li>
+		<li><strong>$("#calendar").weekCalendar("clear");</strong> // Removes all events from the calendar</li>
+		<li><strong>$("#calendar").weekCalendar("getTimeslotTimes", date);</strong> // Returns an array of valid timeslot time objects for the day of the date provided {start: date, startFormatted: string, end: date, endFormatted: string} . Formatted dates are formatted based on the ‘timeFormat’ property. This is a useful method for populating options for start and end times of a calendar event.</li>
+		<li><strong>$("#calendar").weekCalendar("option", key);</strong> //returns the value of the named config option for the current calendar instance.</li>
+		<li><strong>$("#calendar").weekCalendar("option", key, value);</strong> //sets the value of the named config option for the current calendar instance.</li>
+		<li><strong>$("#calendar").weekCalendar("formatDate", date, [format]);</strong> //formats the date as a date based on the format of the current calendar instance or the format if supplied. @see [[Date formating]]</li>
+		<li><strong>$("#calendar").weekCalendar("formatTime", date, [format]);</strong> //formats the date as a time based on the format of the current calendar instance or the format if supplied. @see [[Date formating]]</li>
+		<li><strong>$("#calendar").weekCalendar("serializeEvents");</strong> returns the list of all calEvents displayed in the calendar.</li>
+		<li><strong>$("#calendar").weekCalendar("gotoDate");</strong> Same as gotoWeek, but the new rendering option <strong>startOnFirstDayOfWeek</strong> needed this to be more consistent.</li>
+		<li><strong>$("#calendar").weekCalendar("getFreeBusyManagersFor", date, users);</strong> convenience method to retrieve FreeBusyManager correponding to the date and user.</li>
+		<li><strong>$("#calendar").weekCalendar("getFreeBusyManagerForEvent");</strong> convenience method to retrieve FreeBusyManager correponding to the given event.</li>
+		<li><strong>$("#calendar").weekCalendar("updateFreeBusy", freebusys);</strong> appends the freebusys to replace the old ones. You can give one or an array of freebusys</li>
+		<li><strong>$("#calendar").weekCalendar("getCurrentFirstDay");</strong> returns the current agenda first day date</li>
+		<li><strong>$("#calendar").weekCalendar("getCurrentLastDay");</strong> returns the current agenda last day date</li>
+	</ul>
+</body>
+</html>

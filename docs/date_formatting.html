@@ -1,0 +1,179 @@
+<html>
+<head>
+	<title>Date Formatting</title>
+</head>
+<body>
+<h1>Date Formatting</h1>
+
+
+	<p>The date formatting javascript has been adapted from http://jacwright.com/projects/javascript/date_format</p>
+
+
+	<p>Example time: &ldquo;h:i a&rdquo; will format as 10:30 am</p>
+
+
+	<p>Example date: &ldquo;M d, Y&rdquo; will format as June 16, 2009</p>
+
+
+	<table>
+		<tr>
+			<td><strong>Format Character</strong></td>
+			<td><strong>Description</strong></td>
+			<td><strong>Example returned values</strong></td>
+		</tr>
+		<tr>
+			<td><strong>Day</strong></td>
+		</tr>
+		<tr>
+			<td>d</td>
+			<td>Day of the month, 2 digits with leading zeros</td>
+			<td>01 to 31</td>
+		</tr>
+		<tr>
+			<td>D</td>
+			<td>A textual representation of a day, three letters</td>
+			<td>Mon through Sun</td>
+		</tr>
+		<tr>
+			<td>j</td>
+			<td>Day of the month without leading zeros</td>
+			<td>1 to 31</td>
+		</tr>
+		<tr>
+			<td>l (lowercase &lsquo;L&rsquo;)</td>
+			<td>A full textual representation of the day of the week</td>
+			<td>Sunday through Saturday</td>
+		</tr>
+		<tr>
+			<td>N</td>
+			<td><span class="caps">ISO</span>-8601 numeric representation of the day of the week (added in <span class="caps">PHP 5</span>.1.0)</td>
+			<td>1 (for Monday) through 7 (for Sunday)</td>
+		</tr>
+		<tr>
+			<td>S</td>
+			<td>English ordinal suffix for the day of the month, 2 characters</td>
+			<td>st, nd, rd or th. Works well with j</td>
+		</tr>
+		<tr>
+			<td>w</td>
+			<td>Numeric representation of the day of the week</td>
+			<td>0 (for Sunday) through 6 (for Saturday)</td>
+		</tr>
+		<tr>
+			<td><strong>Month</strong></td>
+		</tr>
+		<tr>
+			<td>F</td>
+			<td>A full textual representation of a month, such as January or March</td>
+			<td>January through December</td>
+		</tr>
+		<tr>
+			<td>m</td>
+			<td>Numeric representation of a month, with leading zeros</td>
+			<td>01 through 12</td>
+		</tr>
+		<tr>
+			<td>M</td>
+			<td>A short textual representation of a month, three letters</td>
+			<td>Jan through Dec</td>
+		</tr>
+		<tr>
+			<td>n</td>
+			<td>Numeric representation of a month, without leading zeros</td>
+			<td>1 through 12</td>
+		</tr>
+		<tr>
+			<td>t</td>
+			<td>Number of days in the given month</td>
+			<td>28 through 31</td>
+		</tr>
+		<tr>
+			<td><strong>Year</strong></td>
+		</tr>
+		<tr>
+			<td>Y</td>
+			<td>A full numeric representation of a year, 4 digits</td>
+			<td>Examples: 1999 or 2003</td>
+		</tr>
+		<tr>
+			<td>y</td>
+			<td>A two digit representation of a year</td>
+			<td>Examples: 99 or 03</td>
+		</tr>
+		<tr>
+			<td><strong>Time</strong></td>
+		</tr>
+		<tr>
+			<td>a</td>
+			<td>Lowercase Ante meridiem and Post meridiem</td>
+			<td>am or pm</td>
+		</tr>
+		<tr>
+			<td>A</td>
+			<td>Uppercase Ante meridiem and Post meridiem</td>
+			<td>AM or PM</td>
+		</tr>
+		<tr>
+			<td>g</td>
+			<td>12-hour format of an hour without leading zeros</td>
+			<td>1 through 12</td>
+		</tr>
+		<tr>
+			<td>G</td>
+			<td>24-hour format of an hour without leading zeros</td>
+			<td>0 through 23</td>
+		</tr>
+		<tr>
+			<td>h</td>
+			<td>12-hour format of an hour with leading zeros</td>
+			<td>01 through 12</td>
+		</tr>
+		<tr>
+			<td>H</td>
+			<td>24-hour format of an hour with leading zeros</td>
+			<td>00 through 23</td>
+		</tr>
+		<tr>
+			<td>i</td>
+			<td>Minutes with leading zeros</td>
+			<td>00 to 59</td>
+		</tr>
+		<tr>
+			<td>s</td>
+			<td>Seconds, with leading zeros</td>
+			<td>00 through 59</td>
+		</tr>
+		<tr>
+			<td><strong>Timezone</strong></td>
+		</tr>
+		<tr>
+			<td>O</td>
+			<td>Difference to Greenwich time (GMT) in hours</td>
+			<td>Example: +0200</td>
+		</tr>
+		<tr>
+			<td>P</td>
+			<td>Difference to Greenwich time (GMT) with colon between hours and minutes</td>
+			<td>Example: +02:00</td>
+		</tr>
+		<tr>
+			<td>Z</td>
+			<td>Timezone offset in seconds. The offset for timezones west of <span class="caps">UTC</span> is always negative, and for those east of <span class="caps">UTC</span> is always positive.</td>
+			<td>43200 through 43200</td>
+		</tr>
+		<tr>
+			<td><strong>Full Date/Time</strong></td>
+		</tr>
+		<tr>
+			<td>r</td>
+			<td><span class="caps">RFC 2822</span> formatted date</td>
+			<td>Example: Thu, 21 Dec 2000 16:01:07 +0200</td>
+		</tr>
+		<tr>
+			<td>U</td>
+			<td>Seconds since the Unix Epoch</td>
+			<td>(January 1 1970 00:00:00 <span class="caps">GMT</span>) See also time()</td>
+		</tr>
+	</table>
+</body>
+</html>

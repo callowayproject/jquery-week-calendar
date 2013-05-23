@@ -1,0 +1,166 @@
+<html>
+<head>
+	<title>Script Options</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<h1>jQuery week calendar options</h1>
+
+
+	<p>This page documents every options you can use to configure the plugin.</p>
+
+
+	<h2>Agenda display options</h2>
+
+
+	<ul>
+	<li><strong>date</strong>: [Date] &#8211; the date to start display with (default is <em>new Date()</em>)</li>
+		<li><strong>minDate</strong>: [Date] &#8211; you cannot browse the calendar before this date (default is <em>null</em>)</li>
+		<li><strong>maxDate</strong>: [Date] &#8211; you cannot browse the calendar further (default is <em>null</em>)</li>
+		<li><strong>startOnFirstDayOfWeek:</strong> [boolean, function(calendar)] – true means start on first day of week, false means starts on startDate. By default, if <strong>daysToShow</strong> is 5 or greater, then true, false otherwise.</li>
+		<li><strong>firstDayOfWeek:</strong> [integer  | default: 0] – Determines what day of the week to start on. 0 = sunday, 1 = monday etc.</li>
+		<li><strong>daysToShow:</strong> [integer | default: 7] – Determines how many days to show. Note that next/prev weekly navigation is still based on weeks rather than the number of days displaying.</li>
+		<li><strong>displayOddEven:</strong> [boolean | default: false] – should the columns be rendered alternatively using odd/even class</li>
+		<li><strong>timeFormat:</strong> [string | default: &#8220;h:i a&#8221; ] – A format to use for times displayed by the calendar.</li>
+		<li><strong>dateFormat:</strong> [string | default: &#8220;M d, Y&#8221; ] – A format to use for dates displayed in the calendar.</li>
+		<li><strong>use24Hour:</strong> [boolean | default: false] – Renders timeslots in 24 hour time</li>
+		<li><strong>useShortDayNames:</strong> [boolean | default: false] – Whether to use short day names for display in day column headers. Ie. ‘Sun’ instead of ‘Sunday’.</li>
+		<li><strong>businessHours:</strong> [object | default: {start: 8, end: 18, limitDisplay: false}] – An object that specifies which hours within the day to render as  business hours. If limitDisplay is true, then only business hours will be rendered. If false, then a whole day will be rendered with business hours timeslot headers styled differently.</li>
+		<li><strong>timeslotHeight:</strong> [integer | default: 20] – The height of each timeslot in pixels. Calendar event text is scaled relative to the timeslot height.</li>
+		<li><strong>timeslotsPerHour:</strong> [integer | default: 4] – The number of timeslots that will be available within an hour. Calendar events will stick to this grid if their correspondiong start and end times are based on the grid being used.</li>
+		<li><strong>scrollToHourMillis:</strong> [integer | default: 500] – The time in milliseconds for the scroll animation to the current time on load of calendar events.</li>
+		<li><strong>allowCalEventOverlap:</strong> [boolean | default: false] – Whether the calendar will allow events to overlap. Events will be moved or resized if necessary if they are dragged or resized to a location that overlaps another calendar event.</li>
+		<li><strong>overlapEventsSeparate:</strong> [boolean | default: false] – If true, events that overlap will be rendered separately without any overlap.</li>
+		<li><strong>showHeader:</strong> [boolean | default: true] &#8211; Whether to display the header.</li>
+		<li><strong>buttons:</strong> [boolean | default: true] – Whether to display the navigation buttons of ‘today’, ‘last week’, ‘next week’.</li>
+		<li><strong>buttonText:</strong> [object | default: {today : &#8220;today&#8221;, lastWeek : &#8221;&lt;&#8221;, nextWeek : &#8221;&gt;&#8221;} ] – Text to use for display in navigation buttons.</li>
+		<li><strong>switchDisplay:</strong> [Object | default: {}] – display buttons on the top right corner of the calendar. This is an object with label as property names and number of day to sow as value.</li>
+		<li><strong>height:</strong> [ function(calendar)] – A function that can return a height in pixels for the calendar. If the height of the calendar is less than the space it takes to render it, the calendar will scroll within the timeslot region while the day column headers will remain fixed.</li>
+		<li><strong>minBodyHeight:</strong> [integer | default: 100] – the calendar body min height if not enough space to render calendar body within the given height function.</li>
+		<li><strong>shortMonths:</strong> [array | default : [&#8216;Jan&#8217;, &#8216;Feb&#8217;, &#8216;Mar&#8217;, &#8216;Apr&#8217;, &#8216;May&#8217;, &#8216;Jun&#8217;, &#8216;Jul&#8217;, &#8216;Aug&#8217;, &#8216;Sep&#8217;, &#8216;Oct&#8217;, &#8216;Nov&#8217;, &#8216;Dec&#8217;]] – Months of the year in short format.</li>
+		<li><strong>longMonths:</strong> [array | default :  [&#8216;January&#8217;, &#8216;February&#8217;, &#8216;March&#8217;, &#8216;April&#8217;, &#8216;May&#8217;, &#8216;June&#8217;, &#8216;July&#8217;, &#8216;August&#8217;, &#8216;September&#8217;, &#8216;October&#8217;, &#8216;November&#8217;, &#8216;December&#8217;] – Months of the year in long format.</li>
+		<li><strong>shortDays:</strong> [array |  default : [&#8216;Sun&#8217;, &#8216;Mon&#8217;, &#8216;Tue&#8217;, &#8216;Wed&#8217;, &#8216;Thu&#8217;, &#8216;Fri&#8217;, &#8216;Sat&#8217;]] – Days of the week in short format</li>
+		<li><strong>longDays:</strong> [array | default : [&#8216;Sunday&#8217;, &#8216;Monday&#8217;, &#8216;Tuesday&#8217;, &#8216;Wednesday&#8217;, &#8216;Thursday&#8217;, &#8216;Friday&#8217;, &#8216;Saturday&#8217;]] days of the week in long format</li>
+		<li><strong>eventHeader</strong>: [function(calEvent, calendar)] – returns the event header string.</li>
+		<li><strong>eventBody</strong>: [function(calEvent, calendar)] – returns the body string.</li>
+		<li><strong>headerSeparator:</strong>: [string | default: &#8217;&lt;br /&gt;&#8216;] – the serparator to apply between day name and date.</li>
+		<li><strong>getHeaderDate:</strong> [function(date, calendar)] – returns the calendar day headers.</li>
+		<li><strong>title:</strong> [function(date, calendar)] – returns the calendar title. You can use following placeholders:
+	<ul>
+	<li><span>%start</span>%: start date for the calendar</li>
+		<li><span>%end</span>%: end date for the calendar</li>
+		<li><span>%date</span>%: curent selected date</li>
+	</ul>
+	</li>
+		<li><strong>resizeEvent:</strong> [string,false | default: &#8216;resize.weekcalendar&#8217;] – the event on which to bind calendar resize</li>
+		<li><strong>hourLine:</strong> [boolean | default: false] – Renders a thin line to indicate the current time.</li>
+	</ul>
+
+
+	<h2>Events options</h2>
+
+
+	<ul>
+	<li><strong>textSize:</strong> [integer | default: 13] – the text size in pixel for event text.</li>
+		<li><strong>timeSeparator:</strong> [string  | default: &#8221; to &#8220;] – The delimiter /separator to use between start and end times display in a calendar event.</li>
+		<li><strong>newEventText:</strong> [string | default: &#8220;New Event&#8221;] – The temporary text used for a new event in the calendar.</li>
+		<li><strong>defaultEventLength:</strong> [integer | default: 2] – An integer representing the number of timeslots a default new event should take up if a user clicks on the calendar.  Clicking and dragging will override this behaviour.</li>
+		<li><strong>draggable:</strong> [function(calEvent, eventElement)] – Called on each event to determine whether it should be draggable or not.  Default function returns true on all events.</li>
+		<li><strong>resizable:</strong> [function(calEvent, eventElement)] – Called on each event to determine whether it should be resizable or not.  Default function returns true on all events.</li>
+		<li><strong>eventRender:</strong> [function(calEvent, element)] – Called prior to rendering an event. Allows modification of the eventElement or the ability to return a different element.</li>
+		<li><strong>eventAfterRender:</strong> [function(calEvent, element)] – Called after rendering an event.</li>
+		<li><strong>eventClick:</strong> [function(calEvent, element, freeBusyManager, $calendar, DomEvent)] – Called on click of a calendar event.</li>
+		<li><strong>eventMouseover:</strong> [function(calEvent, element, DomEvent)] – Called on mouseover of a calendar event.</li>
+		<li><strong>eventMouseout:</strong> [function(calEvent, element, DomEvent)] – Called on mouseout of a calendar event.</li>
+		<li><strong>eventDrag:</strong> [function(calEvent, element)] Called on drag of a calendar event.</li>
+		<li><strong>eventDrop:</strong> [function(newCalEvent, oldCalEvent, element)] Called on drop of a dragged calendar event.</li>
+		<li><strong>eventResize:</strong> [ function(newCalEvent, oldCalEvent, element)] – Called on resize of a calendar event.</li>
+		<li><strong>beforeEventNew:</strong> [function(event, data)] &#8211; Called before the creation of a new calendar event. See <em>beforeeventnew</em> in the <em>Events</em> section.</li>
+		<li><strong>eventNew:</strong> [function(calEvent, calElement, freeBusyManager, calendar, DomEvent)] – Called on creation of a new calendar event.</li>
+	</ul>
+
+
+	<h2>Behavior options</h2>
+
+
+	<ul>
+	<li><strong>readonly:</strong> [boolean | default: false] – If true, all intereactions that eventuate in a changed calendar state are disabled, including drag, drop, resize and event creation.</li>
+		<li><strong>startParam:</strong> [string | default: &#8220;start&#8221;] – The name of the ’start date’ request parameter used when supplying a url for fetching events.</li>
+		<li><strong>endParam:</strong> [string | default: &#8220;end&#8221;] – The name of the ‘end date’ request parameter used when supplying a url for fetching events.</li>
+		<li><strong>calendarBeforeLoad:</strong> [function(calendar)] – Called after the calendar grid has been rendered but before events are loaded</li>
+		<li><strong>calendarAfterLoad:</strong> [function(calendar)] – Called after events are loaded</li>
+		<li><strong>resize:</strong> [function($calendar)] triggered when the calendar is resized</li>
+		<li><strong>changedate:</strong> [function($calendar, newDate)] triggered when the date is changed.</li>
+		<li><strong>allowEventCreation:</strong> [boolean | default true] – allow event creation or not.</li>
+		<li><strong>data:</strong> [array, object, string, function] – Data can be supplied in various forms:
+	<ul>
+	<li>An array of calEvents</li>
+		<li>An object containing a property called ‘events’ that is an array of calEvents and an optional property called ‘options’. If supplied, the options will override the default options supplied to the calendar when it was first loaded. This will cause the calendar to be re-rendered.</li>
+		<li>A url (string) for retrieving data or a function for generating events or retrieving remotely the data structure described above.</li>
+		<li>A function fetching data. prototype is: function(startDate, endDate, render_callback);</li>
+	</ul>
+	</li>
+		<li><strong>jsonOptions:</strong> [Object, function($calendar) ] – default options to pass to server script in order to pass custom data with request</li>
+		<li><strong>preventDragOnEventCreation:</strong> [boolean | default:false] – should it be possible to drag to create an event ?</li>
+	</ul>
+
+
+	<h2>User management options</h2>
+
+
+	<ul>
+	<li><strong>users:</strong> [ array | default: [] ] – the user list. You can specify how to work with users using configuration callbacks. By default this option is an empty array. <strong>Warning: it has to be a real Array</strong></li>
+		<li><strong>showAsSeparateUsers:</strong> [boolean | default: true] – display users as separate columns. This option has no effect when no user is given.</li>
+		<li><strong>getUserId:</strong> [function(user, index, calendar)] – callback used to read user id from a user object. By default, the id is the index in <strong>users</strong> array</li>
+		<li><strong>getUserName:</strong> [function(user, index, calendar)] – callback used to read user name from a user object. The name is displayed in the header.</li>
+		<li><strong>getEventUserId:</strong> [function(calEvent, calendar)] – reads the id(s) of user(s) for who the event should be displayed. You can return a single id or an array. By default <strong>userId</strong> property is used.</li>
+		<li><strong>setEventUserId:</strong> [function(userId, calEvent, calendar)] – sets user id(s) to the calEvent and returns calEvent. By default <strong>userId</strong> property is used.</li>
+	</ul>
+
+
+	<h2>freeBusy management Options</h2>
+
+
+	<p>To pass freebusys to the calendar, just add a <strong>freebusys</strong> array to your data. a freebusy object is a json object with <strong>start</strong> and <strong>end</strong> properties.</p>
+
+
+	<ul>
+	<li><strong>displayFreeBusys:</strong> [boolean | default: false] – should the calendar display freebusys ?</li>
+		<li><strong>getFreeBusyUserId:</strong> [function(calFreeBusy, calendar)] – read the id(s) for who the freebusy is available. By default returns <strong>userId</strong> property.</li>
+		<li><strong>defaultFreeBusy:</strong> [Object | default: {free: false}] – the default freebusy object to apply on the calendar. By default the state is managed in the free property, but you can override this behaviour thanks to the <strong>freeBusyRender</strong> callback.</li>
+		<li><strong>freeBusyRender:</strong> [function(freeBusy, $freeBusy, calendar)] – Callbck used to style the freebusy before appending it to the calendar. default behavior is to apply &#8216;free-busy-busy&#8217; or &#8216;free-busy-free&#8217; class, depending on freeBusy.free value.</li>
+	</ul>
+
+
+	<p>bc. $(document).ready(function() {
+  $(&#8217;#calendar&#8217;).weekCalendar({
+    displayFreeBusys: true,
+    events:[...],
+    freebusys: [
+      {<a href=""2009-05-03T00:00:00.000+10:00">start</a>&#8221;, <a href=""2009-05-03T24:00:00.000+10:00">end</a>&#8221;, &#8220;free&#8221;: false},
+      {<a href=""2009-05-03T08:00:00.000+10:00">start</a>&#8221;, <a href=""2009-05-03T24:18:00.000+10:00">end</a>&#8221;, &#8220;free&#8221;: true}
+    ]
+  });
+});</p>
+
+
+	<h2>events</h2>
+
+
+	<p>this list is not complete, but this is a start:</p>
+
+
+	<ul>
+	<li><strong>reachedmindate</strong>: {$calendar, date} – triggered when you reached the mindate.</li>
+		<li><strong>reachedmaxdate</strong>: {$calendar, date} – triggered when you reached the maxdate.</li>
+		<li><strong>changedate</strong>: {$calendar, date} – triggered when date is changed</li>
+		<li><strong>resize</strong>: {$calendar} &#8211; triggered when the agenda is resized</li>
+		<li><strong>beforeeventnew</strong>: {$event, ui} &#8211; triggered juste before an event creation. The event creation can be prevented by stopping the (dom) event propagation and returning false in the event handler callback. The <em>ui</em> object contains the following attributes:
+	<ul>
+	<li><strong>calEvent</strong>: an object containing the data on the event to create</li>
+		<li><strong>createdFromSingleClick</strong>: boolean indicating if the event was created just by clicking or with drag&#8217;n&#8217;drop</li>
+		<li><strong>calendar</strong>: the calendar which triggered the event</li>
+	</ul></li>
+	</ul>
+</body>
+</html>

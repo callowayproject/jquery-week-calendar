@@ -1,0 +1,28 @@
+h1. jQuery week calendar methods
+
+This page documents every public methods of the plugin
+
+* *$("#calendar").weekCalendar("today");* // Renders the calendar for todays date.
+* *$("#calendar").weekCalendar("prevWeek");* // Go to the previous week relative to the currently rendered week.
+* *$("#calendar").weekCalendar("nextWeek");* // Go to the next week relative to the currently rendered week.
+* *$("#calendar").weekCalendar("prev");* // Go to the previous set relative to the current date and daysToShow option.
+* *$("#calendar").weekCalendar("next");* // Go to the next set relative to the current date and daysToShow option.
+* *$("#calendar").weekCalendar("setDaysToShow");* // Changes how many days are shown (see the _daysToShow_ option).
+* *$("#calendar").weekCalendar("gotoWeek", date);* // Go to the week that the date passed falls within
+* *$("#calendar").weekCalendar("refresh");* // Refreshes the currently rendered week – if the events are based on a remote data source they will be refetched.
+* *$("#calendar").weekCalendar("removeEvent", eventId);* // Removes the event from the calendar
+* *$("#calendar").weekCalendar("updateEvent", calEvent);* // Updates the event with the same id in the calendar or adds it if it  doesn’t exist.
+* *$("#calendar").weekCalendar("removeUnsavedEvents");* // Removes all events in the calendar who’s calEvent data object doesn’t have an id.
+* *$("#calendar").weekCalendar("clear");* // Removes all events from the calendar
+* *$("#calendar").weekCalendar("getTimeslotTimes", date);* // Returns an array of valid timeslot time objects for the day of the date provided {start: date, startFormatted: string, end: date, endFormatted: string} . Formatted dates are formatted based on the ‘timeFormat’ property. This is a useful method for populating options for start and end times of a calendar event.
+* *$("#calendar").weekCalendar("option", key);* //returns the value of the named config option for the current calendar instance.
+* *$("#calendar").weekCalendar("option", key, value);* //sets the value of the named config option for the current calendar instance.
+* *$("#calendar").weekCalendar("formatDate", date, [format]);* //formats the date as a date based on the format of the current calendar instance or the format if supplied. @see [[Date formating]]
+* *$("#calendar").weekCalendar("formatTime", date, [format]);* //formats the date as a time based on the format of the current calendar instance or the format if supplied. @see [[Date formating]]
+* *$("#calendar").weekCalendar("serializeEvents");* returns the list of all calEvents displayed in the calendar.
+* *$("#calendar").weekCalendar("gotoDate");* Same as gotoWeek, but the new rendering option *startOnFirstDayOfWeek* needed this to be more consistent.
+* *$("#calendar").weekCalendar("getFreeBusyManagersFor", date, users);* convenience method to retrieve FreeBusyManager correponding to the date and user.
+* *$("#calendar").weekCalendar("getFreeBusyManagerForEvent");* convenience method to retrieve FreeBusyManager correponding to the given event.
+* *$("#calendar").weekCalendar("updateFreeBusy", freebusys);* appends the freebusys to replace the old ones. You can give one or an array of freebusys
+* *$("#calendar").weekCalendar("getCurrentFirstDay");* returns the current agenda first day date
+* *$("#calendar").weekCalendar("getCurrentLastDay");* returns the current agenda last day date
